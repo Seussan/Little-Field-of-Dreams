@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		IP: DataTypes.FLOAT(10,2),
+		IP: DataTypes.FLOAT(4,1),
 		H: DataTypes.INTEGER,
 		R: DataTypes.INTEGER,
 		W: DataTypes.INTEGER,
