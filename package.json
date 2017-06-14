@@ -1,0 +1,27 @@
+{
+  "name": "Little-Field-of-Dreams",
+  "version": "1.0.0",
+  "description": "Taking Fantasy League Baseball down to a Little League level!! Utilizes: Node, Express Web Server, MySQL Database, Sequelize ORM, Handlebars, Heroku deployment and MVC paradigm.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seussan/Little-Field-of-Dreams.git"
+  },
+  "author": "Susan Allen, Bruno Fernandez, Laura Le, Ed Park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seussan/Little-Field-of-Dreams/issues"
+  },
+  "homepage": "https://github.com/Seussan/Little-Field-of-Dreams#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.9",
+    "mysql": "^2.12.0",
+    "sequelize": "^3.27.0"
+  }
+}
