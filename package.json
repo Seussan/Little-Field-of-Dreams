@@ -1,7 +1,7 @@
 {
   "name": "Little-Field-of-Dreams",
   "version": "1.0.0",
-  "description": "Taking Fantasy League Baseball down to a Little League level!! Utilizes: Node, Express Web Server, MySQL Database, Sequelize ORM, Handlebars, Heroku deployment and MVC paradigm.",
+  "description": "-Node \r -Express \r -MySQL \r -Handlebars \r -Jquery",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
