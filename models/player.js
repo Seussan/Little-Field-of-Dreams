@@ -12,17 +12,13 @@ module.exports = function(sequelize, DataTypes) {
 		playerImage: DataTypes.BLOB
 	},
 	{
+		timestamps: false,
 		classMethods: {
 			associate:function(models){
 				// A player belongsTo (or can be on) only one team.
-				Player.belongsTo(models.Team, { foreignKey: 'fk_teamId' } );
-
-				// A player can "belong to" (or play in) many games.
-				Player.belongsToMany(models.Game, { 
-					as: 'playerGames', 
-					through: 'GamePlayers', 
-					foreignKey: 'fk_playerId', 
-					otherKey: 'fk_gameId'
+				Player.belongsTo(models.Team, { 
+					foreignKey: 'fk_teamId',
+					allowNull: false
 				});
 			}
 		}

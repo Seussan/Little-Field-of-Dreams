@@ -11,9 +11,13 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	},
 	{
+		timestamps: false,
 		classMethods:{
 			associate:function(models){
-				League.hasMany(models.Team, { foreignKey:'fk_leagueId' } );
+				League.hasMany(models.Team, { 
+					foreignKey:'fk_leagueId',
+					allowNull: false
+				});
 			}
 		}
 	}

@@ -5,20 +5,32 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		IP: DataTypes.FLOAT(4,1),
-		H: DataTypes.INTEGER,
-		R: DataTypes.INTEGER,
-		W: DataTypes.INTEGER,
-		SV: DataTypes.INTEGER,
-		ER: DataTypes.INTEGER,
-		K: DataTypes.INTEGER,
-		BB: DataTypes.INTEGER,
-		HR: DataTypes.INTEGER
+		p_IP: DataTypes.FLOAT(4,1),
+		p_H: DataTypes.INTEGER,
+		p_R: DataTypes.INTEGER,
+		p_W: DataTypes.INTEGER,
+		p_SV: DataTypes.INTEGER,
+		p_ER: DataTypes.INTEGER,
+		p_K: DataTypes.INTEGER,
+		p_BB: DataTypes.INTEGER,
+		p_HR: DataTypes.INTEGER
 	},
 	{
-		classMethods:{
+		timestamps: false,
+		classMethods: {
 			associate:function(models){
-				PitchingStats.belongsTo(models.Player, { foreignKey:'fk_playerId' } );
+				// PitchingStats belongsTo one game.
+				PitchingStats.belongsTo(models.Game, { 
+					foreignKey: 'fk_gameId',
+					allowNull: false
+				});
+
+				// PitchingStats belongsTo one player.
+				PitchingStats.belongsTo(models.Player, { 
+					foreignKey:'fk_playerId',
+					allowNull: false
+				});
+
 			}
 		}
 	}

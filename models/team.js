@@ -9,26 +9,25 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING(30),
 			allowNull: false
 		},
-		teamLocation: DataTypes.STRING(50),
-		teamImage: DataTypes.BLOB,
-		teamWins: DataTypes.INTEGER,
-		teamLosses: DataTypes.INTEGER
+//		teamLocation: DataTypes.STRING(50),
+//		teamWins: DataTypes.INTEGER,
+//		teamLosses: DataTypes.INTEGER,
+		teamImage: DataTypes.BLOB('medium')
 	},
 	{
+		timestamps: false,
 		classMethods: {
 			associate:function(models){
 				// A team belongsTo (or can be in) only one league.
-				Team.belongsTo(models.League, { foreignKey: 'fk_leagueId' } );
+				Team.belongsTo(models.League, { 
+					foreignKey: 'fk_leagueId',
+					allowNull: false
+				});
 
 				// A team has many players.
-				Team.hasMany(models.Player, { foreignKey: 'fk_teamId' } );
-
-				// A team can "belong to" (or play in) many games.
-				Team.belongsToMany(models.Game, { 
-					as: 'teamGames', 
-					through: 'TeamGames', 
-					foreignKey: 'fk_teamId', 
-					otherKey: 'fk_gameId'
+				Team.hasMany(models.Player, { 
+					foreignKey: 'fk_teamId',
+					allowNull: false
 				});
 			}
 		}

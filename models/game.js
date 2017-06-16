@@ -5,32 +5,29 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		homeTeamScore: {
+		awayTeam: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},		
+		homeTeam: {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
-		awayTeamScore: {
-			type: DataTypes.INTEGER,
-			allowNull: false
-		}
 	},
 	{
+		timestamps: false,
 		classMethods: {
 			associate:function(models){
-				// A game can "belong to" (or be played by) both a Home team and an Away team.
-				Game.belongsToMany(models.Team, { 
-					as: 'gameTeams', 
-					through: 'TeamGames', 
-					foreignKey: 'fk_gameId', 
-					otherKey: 'fk_teamId'
+				// A game has battingStats.
+				Game.hasMany(models.BattingStats, { 
+					foreignKey: 'fk_gameId',
+					allowNull: false
 				});
 
-				// A game can "belong to" (or be played by) many players.
-				Game.belongsToMany(models.Player, { 
-					as: 'gamePlayers', 
-					through: 'GamePlayers', 
-					foreignKey: 'fk_gameId', 
-					otherKey: 'fk_playerId'
+				// A game has pitchingStats.
+				Game.hasMany(models.PitchingStats, { 
+					foreignKey: 'fk_gameId',
+					allowNull: false
 				});
 			}
 		}
